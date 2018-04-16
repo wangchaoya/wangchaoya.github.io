@@ -9,13 +9,14 @@
   <title>手把手教你使用hexo在MAC上搭建个人博客 | wangchaoya的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、安装HomebrewHomebrew简称brew，是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件。 1ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 执行上面命令后会提示输入系统密码，输入密码继续安装如安装成功则会看到：Installa">
+<meta name="keywords" content="通用,随笔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手把手教你使用hexo在MAC上搭建个人博客">
 <meta property="og:url" content="/atom.xml/2018/04/14/title-手把手教你使用hexo在MAC上搭建个人博客/index.html">
 <meta property="og:site_name" content="wangchaoya的博客">
 <meta property="og:description" content="一、安装HomebrewHomebrew简称brew，是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件。 1ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 执行上面命令后会提示输入系统密码，输入密码继续安装如安装成功则会看到：Installa">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-14T14:26:10.967Z">
+<meta property="og:updated_time" content="2018-04-16T02:45:50.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手把手教你使用hexo在MAC上搭建个人博客">
 <meta name="twitter:description" content="一、安装HomebrewHomebrew简称brew，是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件。 1ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 执行上面命令后会提示输入系统密码，输入密码继续安装如安装成功则会看到：Installa">
@@ -61,7 +62,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/">随笔</a></li>
+				<li><a href="/tags/随笔">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -131,7 +132,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/随笔">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -170,6 +171,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
 <p>执行上面命令后会提示输入系统密码，输入密码继续安装<br>如安装成功则会看到：Installation successful! </p>
 <h2 id="二、安装node"><a href="#二、安装node" class="headerlink" title="二、安装node"></a>二、安装node</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="三、通过终端安装hexo博客"><a href="#三、通过终端安装hexo博客" class="headerlink" title="三、通过终端安装hexo博客"></a>三、通过终端安装hexo博客</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Desktop/</span><br><span class="line">mkdir blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo g <span class="comment"># 或者hexo generate</span></span><br><span class="line">hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></span><br></pre></td></tr></table></figure>
 <p>这里说几个hexo常用命令</p>
 <pre><code>hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹
@@ -208,6 +210,21 @@ hexo new page &quot;pageName&quot; #新建页面
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">通用</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -398,6 +415,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">通用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
