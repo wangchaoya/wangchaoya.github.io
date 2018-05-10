@@ -112,7 +112,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="/images/28CCE9DD-8EDD-4599-8AFC-B454DC5CE5CF.png">
 <meta property="og:image" content="/images/project.png">
-<meta property="og:updated_time" content="2018-05-10T06:01:02.555Z">
+<meta property="og:updated_time" content="2018-05-10T06:35:13.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocoapods安装第三方后头文件无法智能提示">
 <meta name="twitter:description" content="问题发现时间最近在看关于私有库问题，发现自己的私有库在安装后无法获得头文件提示，库已经安装但是在文件里面却无法使用。 解决方案需要修改xcode3个地方配置即可正常使用">
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="Created: 2018-05-10 13:04:26 / Modified: 14:01:02" itemprop="dateCreated datePublished" datetime="2018-05-10T13:04:26+08:00">2018-05-10</time>
+              <time title="Created: 2018-05-10 13:04:26 / Modified: 14:35:13" itemprop="dateCreated datePublished" datetime="2018-05-10T13:04:26+08:00">2018-05-10</time>
             
 
             
@@ -391,10 +391,11 @@
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>需要修改xcode3个地方配置即可正常使用</p>
 <a id="more"></a>
 <h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p>在项目的targets中选择Build Setting  全局搜索 User Heather<br>在找到的栏目中增加两项</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;SRCROOT&#125;</span>   //并在后面选择 recursive</span><br><span class="line">$(PODS_ROOT) //并在后面选择 recursive 这样可以直接使用引号加载</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;SRCROOT&#125;</span>   //并在后面选择 recursive 有此项则可以通过包访问例如<span class="comment">#import&lt;A/A.h&gt;</span></span><br><span class="line">$(PODS_ROOT) //并在后面选择 recursive 这样可以直接使用引号加载 例如 <span class="comment">#import"A.h"</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/28CCE9DD-8EDD-4599-8AFC-B454DC5CE5CF.png" alt="avatar"></p>
 <h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>在项目project中选择Configurations 分别修改项目配置none为pods-pod.debug 和pods-pod.release<br><img src="/images/project.png" alt="avatar"></p>
-<p>##三<br>如果此时项目中还无法找到头文件则可以先强制写出头文件，编译通过后即可正常使用</p>
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p>如果此时项目中还无法找到头文件则可以先强制写出头文件，编译通过后即可正常使用</p>
+<p>猜想是因为没有加载到内存中，需要编译一次才能加载到内存中使用</p>
 
       
     </div>
@@ -572,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题发现时间"><span class="nav-number">1.</span> <span class="nav-text">问题发现时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一"><span class="nav-number">2.1.</span> <span class="nav-text">一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二"><span class="nav-number">2.2.</span> <span class="nav-text">二</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题发现时间"><span class="nav-number">1.</span> <span class="nav-text">问题发现时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一"><span class="nav-number">2.1.</span> <span class="nav-text">一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二"><span class="nav-number">2.2.</span> <span class="nav-text">二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三"><span class="nav-number">2.3.</span> <span class="nav-text">三</span></a></li></ol></li></ol></div>
             
 
           </div>
