@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[cocoapods安装第三方后头文件无法智能提示]]></title>
+    <url>%2F2018%2F05%2F10%2Fcocoapods%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E5%90%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E6%99%BA%E8%83%BD%E6%8F%90%E7%A4%BA%2F</url>
+    <content type="text"><![CDATA[问题发现时间最近在看关于私有库问题，发现自己的私有库在安装后无法获得头文件提示，库已经安装但是在文件里面却无法使用。 解决方案需要修改xcode3个地方配置即可正常使用 一在项目的targets中选择Build Setting 全局搜索 User Heather在找到的栏目中增加两项 ${SRCROOT} //并在后面选择 recursive 有此项则可以通过包访问例如#import&lt;A/A.h&gt; $(PODS_ROOT) //并在后面选择 recursive 这样可以直接使用引号加载 例如 #import&quot;A.h&quot; 二在项目project中选择Configurations 分别修改项目配置none为pods-pod.debug 和pods-pod.release 三如果此时项目中还无法找到头文件则可以先强制写出头文件，编译通过后即可正常使用 猜想是因为没有加载到内存中，需要编译一次才能加载到内存中使用]]></content>
+      <tags>
+        <tag>通用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[完美解决苹果需要完善手机号却又因为密码提示问题忘记无法进入的问题]]></title>
+    <url>%2F2018%2F04%2F18%2F%E8%A7%A3%E5%86%B3%E8%8B%B9%E6%9E%9C%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E6%9C%BA%E5%8F%B7%E4%BF%A1%E6%81%AF%E5%AE%8C%E5%96%84%2F</url>
+    <content type="text"><![CDATA[问题发生的时间4月16号周一时候，当我打开itunes进行发版时候。我发现了一个红色警告，需要完善手机号才能进行发版。可是在进行完善手机号的过程中，发现又要回答安全提示问题，可是提示问题又忘了，所以无法进行发版。 解决方案用手机登录开发者账号appid，然后进入设置，点击头像那列，然后点击“姓名，电话号码，电子邮件”，然后编辑联系方式，添加一个新的可用手机号，然后再回开发者中心，同意协议就可以了。 思考由于是开发者，所以思维定式的认为只能从网站这严谨的流程去解决问题，但是由于手机号是苹果id的信息，所以又可以从苹果id账号中去完善。 当遇到问题时候，要想到问题关联性，不能只通过一种途径去解决问题，而是要想到问题所发生的所有场景，这样才能发现另外的解决方案。]]></content>
+      <tags>
+        <tag>通用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[itunes12.7.0 以上降级到12.6.2版本]]></title>
+    <url>%2F2018%2F04%2F15%2Fitunes%E9%99%8D%E7%BA%A7%2F</url>
+    <content type="text"><![CDATA[itunes升级到12.7.0以上后会出现App Store消失，itunes应用模块消失，这个问题MAC用户先下载12.6版本的itunes地址 https://support.apple.com/zh_CN/downloads/itunes 下载后如果你的itunes版本过高会提示无法安装 删除现在的itunes命令行输入 sudo rm -rf /Applications/iTunes.app 输入密码后手动删除 /Users/m1（指你的用户名）/Music/iTunes 下面除了iTunes Media以为的所有文件 然后就可以安装旧版本的iTunes了 你会发现应用模块已经回来了]]></content>
+      <tags>
+        <tag>通用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[手把手教你使用hexo在MAC上搭建个人博客]]></title>
+    <url>%2F2018%2F04%2F14%2Ftitle-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E4%BD%BF%E7%94%A8hexo%E5%9C%A8MAC%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[一、安装HomebrewHomebrew简称brew，是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件。 1ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 执行上面命令后会提示输入系统密码，输入密码继续安装如安装成功则会看到：Installation successful! 二、安装node1brew install node 三、通过终端安装hexo博客123456789cd Desktop/mkdir blogcd blognpm install hexo-cli -ghexo init blogcd blognpm installhexo g # 或者hexo generatehexo s # 或者hexo server，可以在http://localhost:4000/ 查看 这里说几个hexo常用命令 hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹 hexo server (hexo s) 启动本地web服务，用于博客的预览 hexo deploy (hexo d) 部署播客到远端（比如github, heroku等平台） 另外还有其他几个常用命令： hexo new &quot;postName&quot; #新建文章 hexo new page &quot;pageName&quot; #新建页面 现在我们打开http://localhost:4000/ 已经可以看到一篇内置的blog了。]]></content>
+      <tags>
+        <tag>通用</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F04%2F14%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
