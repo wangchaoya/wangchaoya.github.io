@@ -363,7 +363,7 @@
                 
               
 
-              <time title="Created: 2018-05-14 20:41:06 / Modified: 20:53:54" itemprop="dateCreated datePublished" datetime="2018-05-14T20:41:06+08:00">2018-05-14</time>
+              <time title="Created: 2018-05-14 20:41:06 / Modified: 20:55:15" itemprop="dateCreated datePublished" datetime="2018-05-14T20:41:06+08:00">2018-05-14</time>
             
 
             
@@ -412,18 +412,21 @@
 
       
         
-          
-            <h1 id="Pod私有库更新版本"><a href="#Pod私有库更新版本" class="headerlink" title="Pod私有库更新版本"></a>Pod私有库更新版本</h1><p>项目到后期需要更好的架构，有时候我们选择私有库，当私有库需要更新版本时候我们则需要执行以下操作</p>
+          <h1 id="Pod私有库更新版本"><a href="#Pod私有库更新版本" class="headerlink" title="Pod私有库更新版本"></a>Pod私有库更新版本</h1><p>项目到后期需要更好的架构，有时候我们选择私有库，当私有库需要更新版本时候我们则需要执行以下操作</p>
 <h2 id="修改本地podspec里面版本号"><a href="#修改本地podspec里面版本号" class="headerlink" title="修改本地podspec里面版本号"></a>修改本地podspec里面版本号</h2><p>执行</p>
 <pre><code>git add .
 git commint -m &apos;版本号&apos;
 git push 
 git tag -a 版本号 -m&quot;version 版本号&quot;      //打tag
 git push --tag   //远程打tag
-</code></pre><h2 id="然后需要验证podspec是否能够编译通过"><a href="#然后需要验证podspec是否能够编译通过" class="headerlink" title="然后需要验证podspec是否能够编译通过"></a>然后需要验证podspec是否能够编译通过</h2><pre><code>pod lib lint --allow-warnings //忽略警告验证
-</code></pre><h2 id="最后验证通过后"><a href="#最后验证通过后" class="headerlink" title="最后验证通过后"></a>最后验证通过后</h2><pre><code>pod repo push 你的本地库名字 你的库.podspec --allow-warnings
 </code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/14/Pod私有库更新/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
