@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ps人物肤色美白]]></title>
+    <url>%2F2018%2F05%2F14%2Fps%E4%BA%BA%E7%89%A9%E8%82%A4%E8%89%B2%E7%BE%8E%E7%99%BD%2F</url>
+    <content type="text"><![CDATA[ps人物肤色美白褪色command + j 复制一层图层 选择可选颜色 选择红的 退黑色 绝对 选择黄色 退黑色 绝对 command + i 反向， 用白色擦 美白高光部分提亮 command option shift 2 点击曲线 曲线拉高 control g 建组 蒙版 control I 反向 涂皮肤部分 色彩统一选择色相饱和度 着色 调整色相 饱和度 不透明度 control I 反向 涂皮肤部分 感觉色相 不一样可以调整不透明度 人物肤色美白 二选择通道混合器 单色 调整不透明度 复制图层 改变混合模式 滤色 调整不透明度 复制图层 改变混合模式 柔光 改变不透明 3个图层合并一个组 添加蒙版，填充黑色 选择画笔 涂抹肤色 除去嘴唇眼睛 调整不透明度 整体]]></content>
+      <tags>
+        <tag>PS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Pod私有库更新版本]]></title>
     <url>%2F2018%2F05%2F14%2FPod%E7%A7%81%E6%9C%89%E5%BA%93%E6%9B%B4%E6%96%B0%2F</url>
     <content type="text"><![CDATA[Pod私有库更新版本项目到后期需要更好的架构，有时候我们选择私有库，当私有库需要更新版本时候我们则需要执行以下操作 修改本地podspec里面版本号执行 git add . git commint -m &apos;版本号&apos; git push git tag -a 版本号 -m&quot;version 版本号&quot; //打tag git push --tag //远程打tag 然后需要验证podspec是否能够编译通过pod lib lint --allow-warnings //忽略警告验证 最后验证通过后pod repo push 你的本地库名字 你的库.podspec --allow-warnings]]></content>
