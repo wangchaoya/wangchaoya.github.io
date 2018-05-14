@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Pod私有库更新版本]]></title>
+    <url>%2F2018%2F05%2F14%2FPod%E7%A7%81%E6%9C%89%E5%BA%93%E6%9B%B4%E6%96%B0%2F</url>
+    <content type="text"><![CDATA[Pod私有库更新版本项目到后期需要更好的架构，有时候我们选择私有库，当私有库需要更新版本时候我们则需要执行以下操作 修改本地podspec里面版本号执行 git add . git commint -m &apos;版本号&apos; git push git tag -a 版本号 -m&quot;version 版本号&quot; //打tag git push --tag //远程打tag 然后需要验证podspec是否能够编译通过pod lib lint --allow-warnings //忽略警告验证 最后验证通过后pod repo push 你的本地库名字 你的库.podspec --allow-warnings]]></content>
+      <tags>
+        <tag>通用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[cocoapods安装第三方后头文件无法智能提示]]></title>
     <url>%2F2018%2F05%2F10%2Fcocoapods%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E5%90%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E6%97%A0%E6%B3%95%E6%99%BA%E8%83%BD%E6%8F%90%E7%A4%BA%2F</url>
     <content type="text"><![CDATA[问题发现时间最近在看关于私有库问题，发现自己的私有库在安装后无法获得头文件提示，库已经安装但是在文件里面却无法使用。 解决方案需要修改xcode3个地方配置即可正常使用 一在项目的targets中选择Build Setting 全局搜索 User Heather在找到的栏目中增加两项 ${SRCROOT} //并在后面选择 recursive 有此项则可以通过包访问例如#import&lt;A/A.h&gt; $(PODS_ROOT) //并在后面选择 recursive 这样可以直接使用引号加载 例如 #import&quot;A.h&quot; 二在项目project中选择Configurations 分别修改项目配置none为pods-pod.debug 和pods-pod.release 三如果此时项目中还无法找到头文件则可以先强制写出头文件，编译通过后即可正常使用 猜想是因为没有加载到内存中，需要编译一次才能加载到内存中使用]]></content>

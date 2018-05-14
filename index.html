@@ -317,6 +317,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/atom.xml/2018/05/14/Pod私有库更新/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王超亚">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangchaoya的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/14/Pod私有库更新/" itemprop="url">
+                  Pod私有库更新版本
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-14 20:41:06 / Modified: 20:53:54" itemprop="dateCreated datePublished" datetime="2018-05-14T20:41:06+08:00">2018-05-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/14/Pod私有库更新/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/05/14/Pod私有库更新/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Pod私有库更新版本"><a href="#Pod私有库更新版本" class="headerlink" title="Pod私有库更新版本"></a>Pod私有库更新版本</h1><p>项目到后期需要更好的架构，有时候我们选择私有库，当私有库需要更新版本时候我们则需要执行以下操作</p>
+<h2 id="修改本地podspec里面版本号"><a href="#修改本地podspec里面版本号" class="headerlink" title="修改本地podspec里面版本号"></a>修改本地podspec里面版本号</h2><p>执行</p>
+<pre><code>git add .
+git commint -m &apos;版本号&apos;
+git push 
+git tag -a 版本号 -m&quot;version 版本号&quot;      //打tag
+git push --tag   //远程打tag
+</code></pre><h2 id="然后需要验证podspec是否能够编译通过"><a href="#然后需要验证podspec是否能够编译通过" class="headerlink" title="然后需要验证podspec是否能够编译通过"></a>然后需要验证podspec是否能够编译通过</h2><pre><code>pod lib lint --allow-warnings //忽略警告验证
+</code></pre><h2 id="最后验证通过后"><a href="#最后验证通过后" class="headerlink" title="最后验证通过后"></a>最后验证通过后</h2><pre><code>pod repo push 你的本地库名字 你的库.podspec --allow-warnings
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="/atom.xml/2018/05/10/cocoapods安装第三方后头文件无法智能提示/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1173,7 +1331,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
