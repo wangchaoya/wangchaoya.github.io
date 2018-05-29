@@ -317,6 +317,235 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/atom.xml/2018/05/29/OC中的指针 */">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王超亚">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangchaoya的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/29/OC中的指针 */" itemprop="url">
+                  OC中的指针
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-29 16:38:52" itemprop="dateCreated datePublished" datetime="2018-05-29T16:38:52+08:00">2018-05-29</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/29/OC中的指针 */#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/05/29/OC中的指针 */" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="OC中的指针"><a href="#OC中的指针" class="headerlink" title="OC中的指针 *"></a>OC中的指针 *</h2><h3 id="c语言中的指针"><a href="#c语言中的指针" class="headerlink" title="c语言中的指针"></a>c语言中的指针</h3><p>平时我们可能会进行这样的操作</p>
+<pre><code>int a =10;
+change(a);
+
+void change(int a){
+    a  =20
+}
+</code></pre><p>这样毫无疑问，a的值是没有变化的因为函数是进行了值copy，这个时候的a是一个临时变量我们可以通过打印地址看到</p>
+<pre><code>int a =10;
+change(a);
+NSLog(@&quot;%p&quot;,&amp;a);
+
+void change(int a){
+    a  =20
+    NSLog(@&quot;%p&quot;,&amp;a);
+
+}
+</code></pre><p>打印结果显示</p>
+<pre><code>pointer[18495:657032] 0x7ffee0fd5a2c
+
+pointer[18495:657032] 0x7ffee0fd5a0c
+</code></pre><p>所以我们如果想改变原来的值就需要把a的地址传进去，进而修改原来的值</p>
+<pre><code>int a =10;
+change(&amp;a);
+
+void change(int *a){
+    *a  =20
+}
+</code></pre><p>其实所有的地址都好比是门牌号，而变量的类型只是象征着这个地址存的值的类型，它告诉编译器应该去读这个变量后的多少空间的值。</p>
+<h3 id="OC中的指针-1"><a href="#OC中的指针-1" class="headerlink" title="OC中的指针"></a>OC中的指针</h3><p>OC中的对象一般都是用<em>标识的，例如(NSArray </em>) (NSString <em>) (NSObject </em>)…… 所以我们平时在操作对象的时候其实都是在操作指针来完成我们的行为。</p>
+<p>例如我们有这样一个类Student<br>Student有一个copy的name属性</p>
+<pre><code>Student *s = [Student new];
+
+changeStudent(s);
+
+NSLog(@&quot;%@,s.name&quot;);
+
+void changeStudent(Student *s){
+
+    s.name = @&quot;tony&quot;;
+
+
+}    
+</code></pre><p>这个时候s的name是有值的</p>
+<p>如果我们这么操作</p>
+<pre><code>Student *s = [Student new];
+
+changeStudent(s);
+
+NSLog(@&quot;%@,s.name&quot;);
+
+void changeStudent(Student *s){
+    Student *sNew = [Student new];    
+    s =  sNew;
+
+}
+</code></pre><p>这个时候s的name没有值</p>
+<p>我们可以从指针关系来看这个问题</p>
+<pre><code>Student *s = [Student new];
+NSLog(@&quot;1---%p--------%p&quot;,&amp;s,s);
+
+changeStudent(s);
+NSLog(@&quot;4---%p--------%p&quot;,&amp;s,s);
+NSLog(@&quot;%@,s.name&quot;);
+
+void changeStudent(Student *s){
+    NSLog(@&quot;2---%p--------%p&quot;,&amp;s,s);
+
+    Student *sNew = [Student new];    
+    s =  sNew;
+    NSLog(@&quot;3----%p--------%p&quot;,&amp;s,s);
+}
+</code></pre><p>这个时候打印为</p>
+<pre><code>1---0x7ffeea064a28--------0x604000005de0
+2---0x7ffeea0649d8--------0x604000005de0
+3---0x7ffeea0649d8--------0x600000000530
+4---0x7ffeea064a28--------0x604000005de0
+</code></pre><p>由此可见，当变量传入函数时候只是值传递，函数会生成一个临时变量去接收这个值。</p>
+<h2 id="C和OC中指针"><a href="#C和OC中指针" class="headerlink" title="C和OC中指针"></a>C和OC中指针</h2><p>C语言中指针变量需要明确表示，当我们要取值时候则需要用明确的标识</p>
+<pre><code>int a =10;
+int *p = &amp;a;
+</code></pre><p>这个时候如果想得到a的值 需要用*p 去取</p>
+<p>OC中的指针一般表示对象，我们通常用对象操作各种行为。</p>
+<p>当我们通过对象获取属性或者执行方法时，也就是通过这个指针获取偏移得到结果</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="/atom.xml/2018/05/14/ps人物肤色美白/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1492,7 +1721,7 @@ git push --tag   //远程打tag
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1513,7 +1742,9 @@ git push --tag   //远程打tag
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

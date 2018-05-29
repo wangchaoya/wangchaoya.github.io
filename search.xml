@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[OC中的指针]]></title>
+    <url>%2F2018%2F05%2F29%2FOC%E4%B8%AD%E7%9A%84%E6%8C%87%E9%92%88%20*%2F</url>
+    <content type="text"><![CDATA[OC中的指针 *c语言中的指针平时我们可能会进行这样的操作 int a =10; change(a); void change(int a){ a =20 } 这样毫无疑问，a的值是没有变化的因为函数是进行了值copy，这个时候的a是一个临时变量我们可以通过打印地址看到 int a =10; change(a); NSLog(@&quot;%p&quot;,&amp;a); void change(int a){ a =20 NSLog(@&quot;%p&quot;,&amp;a); } 打印结果显示 pointer[18495:657032] 0x7ffee0fd5a2c pointer[18495:657032] 0x7ffee0fd5a0c 所以我们如果想改变原来的值就需要把a的地址传进去，进而修改原来的值 int a =10; change(&amp;a); void change(int *a){ *a =20 } 其实所有的地址都好比是门牌号，而变量的类型只是象征着这个地址存的值的类型，它告诉编译器应该去读这个变量后的多少空间的值。 OC中的指针OC中的对象一般都是用标识的，例如(NSArray ) (NSString ) (NSObject )…… 所以我们平时在操作对象的时候其实都是在操作指针来完成我们的行为。 例如我们有这样一个类StudentStudent有一个copy的name属性 Student *s = [Student new]; changeStudent(s); NSLog(@&quot;%@,s.name&quot;); void changeStudent(Student *s){ s.name = @&quot;tony&quot;; } 这个时候s的name是有值的 如果我们这么操作 Student *s = [Student new]; changeStudent(s); NSLog(@&quot;%@,s.name&quot;); void changeStudent(Student *s){ Student *sNew = [Student new]; s = sNew; } 这个时候s的name没有值 我们可以从指针关系来看这个问题 Student *s = [Student new]; NSLog(@&quot;1---%p--------%p&quot;,&amp;s,s); changeStudent(s); NSLog(@&quot;4---%p--------%p&quot;,&amp;s,s); NSLog(@&quot;%@,s.name&quot;); void changeStudent(Student *s){ NSLog(@&quot;2---%p--------%p&quot;,&amp;s,s); Student *sNew = [Student new]; s = sNew; NSLog(@&quot;3----%p--------%p&quot;,&amp;s,s); } 这个时候打印为 1---0x7ffeea064a28--------0x604000005de0 2---0x7ffeea0649d8--------0x604000005de0 3---0x7ffeea0649d8--------0x600000000530 4---0x7ffeea064a28--------0x604000005de0 由此可见，当变量传入函数时候只是值传递，函数会生成一个临时变量去接收这个值。 C和OC中指针C语言中指针变量需要明确表示，当我们要取值时候则需要用明确的标识 int a =10; int *p = &amp;a; 这个时候如果想得到a的值 需要用*p 去取 OC中的指针一般表示对象，我们通常用对象操作各种行为。 当我们通过对象获取属性或者执行方法时，也就是通过这个指针获取偏移得到结果]]></content>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ps人物肤色美白]]></title>
     <url>%2F2018%2F05%2F14%2Fps%E4%BA%BA%E7%89%A9%E8%82%A4%E8%89%B2%E7%BE%8E%E7%99%BD%2F</url>
     <content type="text"><![CDATA[ps人物肤色美白褪色command + j 复制一层图层 选择可选颜色 选择红的 退黑色 绝对 选择黄色 退黑色 绝对 command + i 反向， 用白色擦 美白高光部分提亮 command option shift 2 点击曲线 曲线拉高 control g 建组 蒙版 control I 反向 涂皮肤部分 色彩统一选择色相饱和度 着色 调整色相 饱和度 不透明度 control I 反向 涂皮肤部分 感觉色相 不一样可以调整不透明度 人物肤色美白 二选择通道混合器 单色 调整不透明度 复制图层 改变混合模式 滤色 调整不透明度 复制图层 改变混合模式 柔光 改变不透明 3个图层合并一个组 添加蒙版，填充黑色 选择画笔 涂抹肤色 除去嘴唇眼睛 调整不透明度 整体]]></content>
