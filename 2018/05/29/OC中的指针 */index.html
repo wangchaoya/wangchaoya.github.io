@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="wangchaoya的博客">
 <meta property="og:description" content="OC中的指针 *c语言中的指针平时我们可能会进行这样的操作 int a =10; change(a);  void change(int a){     a  =20 } 这样毫无疑问，a的值是没有变化的因为函数是进行了值copy，这个时候的a是一个临时变量我们可以通过打印地址看到 int a =10; change(a); NSLog(@&amp;quot;%p&amp;quot;,&amp;amp;a);  void">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-29T08:38:52.000Z">
+<meta property="og:updated_time" content="2018-05-29T12:41:54.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC中的指针">
 <meta name="twitter:description" content="OC中的指针 *c语言中的指针平时我们可能会进行这样的操作 int a =10; change(a);  void change(int a){     a  =20 } 这样毫无疑问，a的值是没有变化的因为函数是进行了值copy，这个时候的a是一个临时变量我们可以通过打印地址看到 int a =10; change(a); NSLog(@&amp;quot;%p&amp;quot;,&amp;amp;a);  void">
@@ -359,9 +359,13 @@
                 
               
 
-              <time title="Created: 2018-05-29 16:38:52" itemprop="dateCreated datePublished" datetime="2018-05-29T16:38:52+08:00">2018-05-29</time>
+              <time title="Created: 2018-05-29 16:38:52 / Modified: 20:41:54" itemprop="dateCreated datePublished" datetime="2018-05-29T16:38:52+08:00">2018-05-29</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -428,7 +432,8 @@ void change(int a){
     NSLog(@&quot;%p&quot;,&amp;a);
 
 }
-</code></pre><p>打印结果显示</p>
+</code></pre><a id="more"></a>
+<p>打印结果显示</p>
 <pre><code>pointer[18495:657032] 0x7ffee0fd5a2c
 
 pointer[18495:657032] 0x7ffee0fd5a0c
