@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[远程服务器安装SS]]></title>
     <url>%2F2018%2F06%2F13%2F%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85SS%2F</url>
     <content type="text"><![CDATA[远程服务器安装SS给远程服务器初始化密码sudo passwd root 进入root用户su 然后输入密码 安装 wget管理工具yum install wget 使用秋水逸冰的安装脚本wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/ shadowsocks_install/master/shadowsocks-all.sh chmod +x shadowsocks-all.sh ./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log 这里选择 3 进行安装 根据提示分别输入 密码 端口号 加密方式 这时候ss服务已经能够使用 如何使用ssh登录远程服务器首先将自己的ssh公钥加入客户端的元数据管理这里以google 云为例 这里要记住前面的用户名 进入root用户下su 编辑ssh配置文件vi /etc/ssh/sshd_config 修改以下内容PermitRootLogin yes PasswordAuthentication yes 重启 sshservice sshd restart 重启远程服务器reboot 在本地客户端使用ssh命令ssh [username]@[ip] 这样即可连入远程服务器]]></content>
+      <tags>
+        <tag>通用</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[OC中的指针]]></title>
